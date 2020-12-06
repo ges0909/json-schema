@@ -1,0 +1,26 @@
+scenario:
+
+  requirements:
+    - VTVDE-TTPA-DP4.1
+    - VTVDE-TTPA-DP4.2
+
+  title: create a new VTV account (1st provisioning)
+
+  test:
+
+    - service: vtv-adapter.adapter.account.get
+      title: get and verify created account
+      with_property: a
+      with_testdata: [b, c]
+      verify:
+        - result: http_status_code
+          equal: 200
+        - result: error_message
+          empty: true
+        - use: gerrit
+          with_property: a
+          with_testdata: [b, c]
+      store:
+        - result: var
+          as_property: xyz
+

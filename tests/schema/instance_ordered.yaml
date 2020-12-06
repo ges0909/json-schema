@@ -1,0 +1,15 @@
+scenario:
+
+  - title: get and verify created account
+    action: account.get
+    with: [b, c]
+    assert:
+      - result: http_status_code
+        equal: 200
+      - result: error_message
+        empty: true
+      - use: gerrit
+        with: [b, c]
+    store:
+      - result: var
+        as: xyz
