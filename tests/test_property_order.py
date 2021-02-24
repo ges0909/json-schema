@@ -8,6 +8,8 @@ from jsonschema import (
 )
 from ruamel import yaml
 
+logger = logging.getLogger(__name__)
+
 
 def load_yaml_file(path: str) -> dict:
     with open(path, "r") as stream:
@@ -26,8 +28,6 @@ def _property_order(validator, value, instance, schema):
 
 
 def test_yaml_ordered_keys():
-    logger = logging.getLogger(__name__)
-
     all_validators = dict(Draft7Validator.VALIDATORS)
     all_validators["propertyOrder"] = _property_order
     my_validator = validators.create(
@@ -37,5 +37,5 @@ def test_yaml_ordered_keys():
     try:
         my_validator.validate(instance=load_yaml_file("schema/instance_ordered.yaml"))
     except (SchemaError, ValidationError) as ex:
-        logger.error("%s, schema=%s, instance=%s", ex.message, ex.schema, ex.instance)
+        logger.error("%s, schema=%s, instance=%s", ex.message, ex.schema, ex.EXAMPLE)
         raise

@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "base.json",
+    "definitions": {
+        "string_alias": {
+            "type": "wrong"
+        }
+    },
+    "properties": {
+        "my_string": {
+            "$ref": "#/definitions/string_alias"
+        }
+    },
+    "additionalProperties": true
+}

@@ -6,9 +6,9 @@ authors = ["Gerrit Schrader <gerrit.schrader@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-jsonschema = "^3.2.0"
 fastjsonschema = "^2.15.0"
 "ruamel.yaml" = "^0.16.12"
+jsonschema = "^3.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"

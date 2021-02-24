@@ -2,9 +2,9 @@ import logging
 
 import pytest
 from jsonschema import (
-    validate,
     ValidationError,
     SchemaError,
+    validate,
 )
 from ruamel import yaml
 
@@ -64,5 +64,5 @@ def test_yaml_validate():
             schema=load_yaml_file("schema/schema.yaml"),
         )
     except (SchemaError, ValidationError) as ex:
-        logger.error("%s, schema=%s, instance=%s", ex.message, ex.schema, ex.instance)
+        logger.error("%s, schema=%s, instance=%s", ex.message, ex.schema, ex.EXAMPLE)
         raise
