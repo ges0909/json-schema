@@ -8,6 +8,7 @@ from fastjsonschema import JsonSchemaDefinitionException, JsonSchemaValueExcepti
 EXAMPLE = {
     "my_string": "Hello world!",
     "my_number": 42,
+    "my_other_string": "Hello Jan.",
 }
 
 SCHEMA_DIR = "schema"
@@ -24,7 +25,7 @@ def ref_handler(uri: str) -> dict[str, Any]:
 
 def test_resolve_internal_ref():
     validate = fastjsonschema.compile(
-        definition=load_json("schema/base.json"),
+        definition=load_json("schema/nested/base.json"),
         handlers={"": ref_handler},
     )
     validate(data=EXAMPLE)
@@ -47,7 +48,7 @@ def test_json_schema_definition_error():
 
 def test_json_schema_value_error():
     validate = fastjsonschema.compile(
-        definition=load_json("schema/base.json"), handlers={"": ref_handler}
+        definition=load_json("schema/nested/base.json"), handlers={"": ref_handler}
     )
     with pytest.raises(JsonSchemaValueException):
         validate(data={"my_string": 1.0})

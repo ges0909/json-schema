@@ -21,7 +21,7 @@ def test_resolve_internal_ref():
     schema = load_json(schema_path)
     resolver = RefResolver(
         base_uri=schema_path.as_uri(),
-        referrer=schema,  # !!! required for file internal ref.s
+        referrer=schema,  # !!! required for schema internal ref.s
     )
     validate(
         instance=EXAMPLE,

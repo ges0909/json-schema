@@ -63,6 +63,6 @@ def test_yaml_validate():
             instance=load_yaml_file("schema/instance.yaml"),
             schema=load_yaml_file("schema/schema.yaml"),
         )
-    except (SchemaError, ValidationError) as ex:
-        logger.error("%s, schema=%s, instance=%s", ex.message, ex.schema, ex.EXAMPLE)
+    except (SchemaError, ValidationError) as error:
+        logger.error("%s, schema=%s, instance=%s", error.message, error.schema, error.EXAMPLE)
         raise

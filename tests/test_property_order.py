@@ -17,8 +17,8 @@ def load_yaml_file(path: str) -> dict:
 
 
 def _property_order(validator, value, instance, schema):
-    instance_keys: list = list(instance.keys())
-    schema_keys: list = schema.get("propertyOrder")
+    instance_keys = list(instance.keys())
+    schema_keys = schema.get("propertyOrder")
     for index, schema_key in enumerate(schema_keys):
         instance_key = instance_keys[index]
         if schema_key != instance_key:
