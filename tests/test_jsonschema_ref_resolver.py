@@ -17,16 +17,16 @@ def load_json(name: str) -> dict[str, Any]:
 
 
 def test_resolve_internal_ref():
-    schema_path = Path("schema/base.json").absolute()
+    schema_path = Path("schema/nested/base.json").absolute()
     schema = load_json(schema_path)
     resolver = RefResolver(
         base_uri=schema_path.as_uri(),
-        referrer=schema,  # !!! required for file internal references
+        referrer=schema,  # !!! required for file internal ref.s
     )
     validate(
         instance=EXAMPLE,
         schema=schema,
-        resolver=resolver,  # None
+        resolver=resolver,
     )
 
 
